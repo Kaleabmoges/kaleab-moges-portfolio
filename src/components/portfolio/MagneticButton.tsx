@@ -8,6 +8,8 @@ type MagneticButtonProps = {
   as?: "button" | "a";
   href?: string;
   download?: boolean;
+  target?: string;
+  rel?: string;
 };
 
 /** Button that magnetically follows the cursor on hover. */
@@ -18,6 +20,8 @@ export function MagneticButton({
   as = "button",
   href,
   download,
+  target,
+  rel,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLElement>(null);
   const x = useSpring(useMotionValue(0), { stiffness: 250, damping: 15 });
@@ -44,6 +48,8 @@ export function MagneticButton({
       ref={ref}
       href={href}
       download={download}
+      target={target}
+      rel={rel}
       onClick={onClick}
       onMouseMove={handleMove}
       onMouseLeave={reset}

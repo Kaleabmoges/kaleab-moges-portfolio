@@ -1,8 +1,10 @@
-import { Play, Youtube } from "lucide-react";
+import { ExternalLink, LineChart, Play, Youtube } from "lucide-react";
 import { Reveal } from "../Reveal";
 import { TiltCard } from "../TiltCard";
 import { Counter } from "../Counter";
 import { SectionHeading } from "../SectionHeading";
+import { MagneticButton } from "../MagneticButton";
+import { BROKERS } from "../socials";
 
 const CHANNELS = [
   {
@@ -90,6 +92,46 @@ export function Content() {
             </div>
           </div>
         </Reveal>
+
+        <Reveal delay={0.25}>
+          <div className="card-elegant relative mt-6 overflow-hidden rounded-3xl p-7">
+            <div className="absolute -right-12 -top-12 h-48 w-48 rounded-full bg-gradient-to-br from-gold/25 to-primary/15 blur-2xl" />
+            <div className="relative flex items-center gap-3">
+              <div className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-gold/20 to-primary/20 text-gold">
+                <LineChart className="h-6 w-6" />
+              </div>
+              <div>
+                <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                  Financial Markets
+                </div>
+                <h3 className="font-display text-xl font-bold">Trade with me</h3>
+              </div>
+            </div>
+            <p className="relative mt-4 max-w-2xl text-sm text-muted-foreground">
+              Start your trading journey with my recommended regulated brokers. Open an account to
+              learn and trade the financial markets the right way.
+            </p>
+            <div className="relative mt-6 flex flex-wrap gap-3">
+              {BROKERS.map((b) => (
+                <MagneticButton
+                  key={b.name}
+                  as="a"
+                  href={b.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-primary to-chart-3 px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow"
+                >
+                  Open {b.name} Account
+                  <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </MagneticButton>
+              ))}
+            </div>
+            <p className="relative mt-4 text-xs text-muted-foreground/70">
+              Trading involves risk. Only trade with capital you can afford to lose.
+            </p>
+          </div>
+        </Reveal>
+
       </div>
     </section>
   );

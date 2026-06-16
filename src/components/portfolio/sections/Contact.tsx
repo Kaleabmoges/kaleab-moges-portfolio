@@ -1,16 +1,22 @@
 import { motion } from "motion/react";
 import { useState } from "react";
-import { Linkedin, Mail, MapPin, Phone, Send, Youtube } from "lucide-react";
+import { Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
 import { toast } from "sonner";
 import { Reveal } from "../Reveal";
 import { SectionHeading } from "../SectionHeading";
 import { MagneticButton } from "../MagneticButton";
+import { SOCIALS } from "../socials";
 
 const DETAILS = [
   { icon: MapPin, label: "Location", value: "Addis Ababa, Ethiopia", href: undefined },
   { icon: Phone, label: "Phone", value: "+251 987 076 125", href: "tel:+251987076125" },
   { icon: Mail, label: "Email", value: "kaleabmoges.eth@gmail.com", href: "mailto:kaleabmoges.eth@gmail.com" },
-  { icon: Linkedin, label: "LinkedIn", value: "Connect with me", href: "#" },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: "Connect with me",
+    href: "https://www.linkedin.com/in/kaleabmoges",
+  },
 ];
 
 export function Contact() {
@@ -39,24 +45,29 @@ export function Contact() {
         <div className="mt-16 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
           {/* details + map */}
           <div className="space-y-4">
-            {DETAILS.map((d, i) => (
-              <Reveal key={d.label} delay={i * 0.06}>
-                <a
-                  href={d.href}
-                  className="card-elegant flex items-center gap-4 rounded-2xl p-5 transition-colors hover:border-primary/40"
-                >
-                  <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-primary/20 to-gold/20 text-primary">
-                    <d.icon className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs uppercase tracking-widest text-muted-foreground">
-                      {d.label}
+            {DETAILS.map((d, i) => {
+              const external = d.href?.startsWith("http");
+              return (
+                <Reveal key={d.label} delay={i * 0.06}>
+                  <a
+                    href={d.href}
+                    target={external ? "_blank" : undefined}
+                    rel={external ? "noopener noreferrer" : undefined}
+                    className="card-elegant flex items-center gap-4 rounded-2xl p-5 transition-colors hover:border-primary/40"
+                  >
+                    <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-primary/20 to-gold/20 text-primary">
+                      <d.icon className="h-5 w-5" />
                     </div>
-                    <div className="font-medium">{d.value}</div>
-                  </div>
-                </a>
-              </Reveal>
-            ))}
+                    <div>
+                      <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                        {d.label}
+                      </div>
+                      <div className="font-medium">{d.value}</div>
+                    </div>
+                  </a>
+                </Reveal>
+              );
+            })}
 
             <Reveal delay={0.3}>
               <div className="card-elegant overflow-hidden rounded-2xl">
@@ -103,15 +114,18 @@ export function Contact() {
           </Reveal>
         </div>
 
-        <div className="mt-12 flex justify-center gap-3">
-          {[Youtube, Linkedin, Mail].map((Icon, i) => (
+        <div className="mt-12 flex flex-wrap justify-center gap-3">
+          {SOCIALS.map((s) => (
             <motion.a
-              key={i}
-              href="#"
+              key={s.label}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={s.label}
               whileHover={{ y: -4, scale: 1.1 }}
               className="grid h-12 w-12 place-items-center rounded-xl glass text-muted-foreground transition-colors hover:text-primary"
             >
-              <Icon className="h-5 w-5" />
+              <s.icon className="h-5 w-5" />
             </motion.a>
           ))}
         </div>
