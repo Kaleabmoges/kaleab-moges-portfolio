@@ -1,8 +1,10 @@
-import { Play, Youtube } from "lucide-react";
+import { ExternalLink, LineChart, Play, Youtube } from "lucide-react";
 import { Reveal } from "../Reveal";
 import { TiltCard } from "../TiltCard";
 import { Counter } from "../Counter";
 import { SectionHeading } from "../SectionHeading";
+import { MagneticButton } from "../MagneticButton";
+import { BROKERS } from "../socials";
 
 const CHANNELS = [
   {
