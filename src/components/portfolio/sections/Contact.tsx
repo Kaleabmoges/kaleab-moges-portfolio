@@ -1,16 +1,22 @@
 import { motion } from "motion/react";
 import { useState } from "react";
-import { Linkedin, Mail, MapPin, Phone, Send, Youtube } from "lucide-react";
+import { Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
 import { toast } from "sonner";
 import { Reveal } from "../Reveal";
 import { SectionHeading } from "../SectionHeading";
 import { MagneticButton } from "../MagneticButton";
+import { SOCIALS } from "../socials";
 
 const DETAILS = [
   { icon: MapPin, label: "Location", value: "Addis Ababa, Ethiopia", href: undefined },
   { icon: Phone, label: "Phone", value: "+251 987 076 125", href: "tel:+251987076125" },
   { icon: Mail, label: "Email", value: "kaleabmoges.eth@gmail.com", href: "mailto:kaleabmoges.eth@gmail.com" },
-  { icon: Linkedin, label: "LinkedIn", value: "Connect with me", href: "#" },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: "Connect with me",
+    href: "https://www.linkedin.com/in/kaleabmoges",
+  },
 ];
 
 export function Contact() {
