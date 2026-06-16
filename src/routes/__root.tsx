@@ -77,14 +77,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Kaleab Moges — Educator, Economist & Financial Markets Educator" },
+      { title: "Kaleab Moges" },
       {
         name: "description",
         content:
           "Portfolio of Kaleab Moges — educator, economics graduate, youth leader, entrepreneur and financial markets educator empowering the next generation through knowledge.",
       },
       { name: "author", content: "Kaleab Moges" },
-      { property: "og:title", content: "Kaleab Moges — Educator & Financial Markets Educator" },
+      { property: "og:title", content: "Kaleab Moges" },
       {
         property: "og:description",
         content:
@@ -92,6 +92,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Kaleab Moges" },
+      { name: "description", content: "Kaleab's Digital Canvas is a premium, interactive 3D portfolio website showcasing professional achievements and skills." },
+      { property: "og:description", content: "Kaleab's Digital Canvas is a premium, interactive 3D portfolio website showcasing professional achievements and skills." },
+      { name: "twitter:description", content: "Kaleab's Digital Canvas is a premium, interactive 3D portfolio website showcasing professional achievements and skills." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/03a7a6a4-a68f-4a7d-9973-9a0027eec97d" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/03a7a6a4-a68f-4a7d-9973-9a0027eec97d" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
