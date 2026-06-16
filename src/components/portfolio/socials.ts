@@ -1,7 +1,7 @@
-import { createElement, type SVGProps } from "react";
+import { createElement, type ReactElement, type SVGProps } from "react";
 import { Linkedin, Mail, Send, Youtube, type LucideIcon } from "lucide-react";
 
-export type IconType = LucideIcon | ((props: SVGProps<SVGSVGElement>) => JSX.Element);
+export type IconType = LucideIcon | ((props: SVGProps<SVGSVGElement>) => ReactElement);
 
 export type SocialLink = {
   label: string;
