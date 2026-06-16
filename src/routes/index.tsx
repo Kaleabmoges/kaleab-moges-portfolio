@@ -49,7 +49,7 @@ function Index() {
       <CustomCursor />
       <Navbar />
 
-      <main className="cursor-none md:cursor-none">
+      <main className="md:cursor-none">
         <Hero />
         <About />
         <Experience />
