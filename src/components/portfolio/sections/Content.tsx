@@ -14,6 +14,7 @@ const CHANNELS = [
     metric: 12,
     metricLabel: "K+ Views",
     accent: "from-chart-4/30 to-destructive/20",
+    href: "https://www.youtube.com/@KaleabMogesOfficial",
   },
   {
     platform: "YouTube",
@@ -22,6 +23,7 @@ const CHANNELS = [
     metric: 8,
     metricLabel: "K+ Views",
     accent: "from-primary/30 to-chart-3/20",
+    href: "https://www.youtube.com/@KaleabMogesOfficial",
   },
 ];
 
@@ -42,29 +44,42 @@ export function Content() {
           {CHANNELS.map((c, i) => (
             <Reveal key={c.name} delay={i * 0.1}>
               <TiltCard className="group h-full">
-                <div className="card-elegant relative h-full overflow-hidden rounded-2xl p-6">
-                  <div
-                    className={`absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-to-br ${c.accent} blur-2xl`}
-                  />
-                  <div className="relative flex items-start justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="grid h-12 w-12 place-items-center rounded-xl bg-destructive/15 text-destructive">
-                        <Youtube className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <div className="text-xs uppercase tracking-widest text-muted-foreground">
-                          {c.platform}
+                <a
+                  href={c.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Visit ${c.name} on YouTube`}
+                  className="block h-full"
+                >
+                  <div className="card-elegant relative h-full overflow-hidden rounded-2xl p-6 transition-shadow hover:shadow-glow">
+                    <div
+                      className={`absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-to-br ${c.accent} blur-2xl`}
+                    />
+                    <div className="relative flex items-start justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="grid h-12 w-12 place-items-center rounded-xl bg-destructive/15 text-destructive">
+                          <Youtube className="h-6 w-6" />
                         </div>
-                        <h3 className="font-display text-xl font-bold">{c.name}</h3>
+                        <div>
+                          <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                            {c.platform}
+                          </div>
+                          <h3 className="font-display text-xl font-bold">{c.name}</h3>
+                        </div>
                       </div>
+                      <Play className="h-5 w-5 text-primary transition-transform group-hover:scale-125" />
                     </div>
-                    <Play className="h-5 w-5 text-primary transition-transform group-hover:scale-125" />
+                    <p className="relative mt-4 text-sm text-muted-foreground">{c.desc}</p>
+                    <div className="relative mt-6 flex items-end justify-between">
+                      <div className="font-display text-3xl font-bold text-gradient-gold">
+                        <Counter to={c.metric} suffix={c.metricLabel} />
+                      </div>
+                      <span className="inline-flex items-center gap-1 text-xs font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
+                        Watch <ExternalLink className="h-3.5 w-3.5" />
+                      </span>
+                    </div>
                   </div>
-                  <p className="relative mt-4 text-sm text-muted-foreground">{c.desc}</p>
-                  <div className="relative mt-6 font-display text-3xl font-bold text-gradient-gold">
-                    <Counter to={c.metric} suffix={c.metricLabel} />
-                  </div>
-                </div>
+                </a>
               </TiltCard>
             </Reveal>
           ))}

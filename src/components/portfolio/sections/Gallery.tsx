@@ -1,21 +1,41 @@
 import { motion } from "motion/react";
-import { Heart, Users } from "lucide-react";
+import { Heart, LineChart, Users } from "lucide-react";
 import { Reveal } from "../Reveal";
 import { TiltCard } from "../TiltCard";
 import { SectionHeading } from "../SectionHeading";
 import charity1 from "@/assets/kindeal-charity-1.jpg.asset.json";
 import charity2 from "@/assets/kindeal-charity-2.jpg.asset.json";
+import trading1 from "@/assets/trading-students-1.jpg.asset.json";
+import trading2 from "@/assets/trading-students-2.jpg.asset.json";
 
 const PHOTOS = [
+  {
+    src: trading1.url,
+    title: "Mentoring Trading Students",
+    caption: "Hands-on sessions guiding students through live financial markets.",
+    tag: "Trading",
+    icon: LineChart,
+  },
+  {
+    src: trading2.url,
+    title: "Trading Study Group",
+    caption: "Learning together — charts, strategy and real market practice.",
+    tag: "Trading",
+    icon: LineChart,
+  },
   {
     src: charity1.url,
     title: "Talita Rise Up Outreach",
     caption: "Kindeal Charity Club members on the ground, supporting the community.",
+    tag: "Community",
+    icon: Heart,
   },
   {
     src: charity2.url,
     title: "Hands-on Community Service",
     caption: "Volunteering together to bring real change to young lives.",
+    tag: "Community",
+    icon: Heart,
   },
 ];
 
@@ -25,9 +45,9 @@ export function Gallery() {
       <div className="mx-auto max-w-6xl px-5">
         <SectionHeading
           eyebrow="Gallery"
-          title="Giving back with the"
-          highlight="Kindeal Charity Club"
-          description="Beyond the classroom and the markets — empowering communities through service, mentorship and the Kindeal Charity Club."
+          title="Moments that"
+          highlight="matter"
+          description="From mentoring trading students to serving communities with the Kindeal Charity Club — teaching, leading and giving back in action."
         />
 
         <div className="mt-16 grid gap-6 md:grid-cols-2">
@@ -44,7 +64,7 @@ export function Gallery() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
                     <div className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full glass-strong px-3 py-1 text-xs font-medium text-primary">
-                      <Heart className="h-3.5 w-3.5" /> Community
+                      <p.icon className="h-3.5 w-3.5" /> {p.tag}
                     </div>
                   </div>
                   <div className="relative -mt-12 p-6">
@@ -63,9 +83,9 @@ export function Gallery() {
               <Users className="h-5 w-5" />
             </div>
             <p className="text-sm text-muted-foreground">
-              Proud to lead and serve with the{" "}
+              Empowering students in the markets and serving communities with the{" "}
               <span className="font-semibold text-foreground">Kindeal Charity Club</span> — turning
-              education into impact, one community at a time.
+              education into impact, one person at a time.
             </p>
           </motion.div>
         </Reveal>

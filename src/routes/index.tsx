@@ -10,6 +10,7 @@ import { Leadership } from "@/components/portfolio/sections/Leadership";
 import { Gallery } from "@/components/portfolio/sections/Gallery";
 import { Skills } from "@/components/portfolio/sections/Skills";
 import { Content } from "@/components/portfolio/sections/Content";
+import { Hobbies } from "@/components/portfolio/sections/Hobbies";
 import { Education } from "@/components/portfolio/sections/Education";
 import { Certifications } from "@/components/portfolio/sections/Certifications";
 import { Contact } from "@/components/portfolio/sections/Contact";
@@ -58,6 +59,7 @@ function Index() {
         <Gallery />
         <Skills />
         <Content />
+        <Hobbies />
         <Education />
         <Certifications />
         <Contact />
