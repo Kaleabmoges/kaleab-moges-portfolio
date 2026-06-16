@@ -14,6 +14,7 @@ const CHANNELS = [
     metric: 12,
     metricLabel: "K+ Views",
     accent: "from-chart-4/30 to-destructive/20",
+    href: "https://www.youtube.com/@KaleabMogesOfficial",
   },
   {
     platform: "YouTube",
@@ -22,6 +23,7 @@ const CHANNELS = [
     metric: 8,
     metricLabel: "K+ Views",
     accent: "from-primary/30 to-chart-3/20",
+    href: "https://www.youtube.com/@KaleabMogesOfficial",
   },
 ];
 
