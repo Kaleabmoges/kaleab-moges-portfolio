@@ -91,20 +91,26 @@ export function Content() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Visit Kaleab Moges on TikTok"
-            className="group card-elegant mt-6 block rounded-2xl p-6 transition-shadow hover:shadow-glow"
+            className="group card-elegant relative mt-6 block overflow-hidden rounded-2xl p-6 transition-shadow hover:shadow-glow"
           >
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div>
-                <div className="text-xs uppercase tracking-widest text-muted-foreground">
-                  TikTok
+            <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-to-br from-chart-3/25 to-primary/15 blur-2xl" />
+            <div className="relative flex flex-wrap items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-foreground text-background transition-transform group-hover:scale-110">
+                  <TikTokIcon className="h-6 w-6" />
                 </div>
-                <h3 className="font-display text-xl font-bold">
-                  Short-form education
-                  <span className="ml-2 inline-flex items-center gap-1 align-middle text-sm font-medium text-primary">
-                    @kaleabmoges783
-                    <ExternalLink className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-                  </span>
-                </h3>
+                <div>
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                    TikTok
+                  </div>
+                  <h3 className="font-display text-xl font-bold">
+                    Short-form education
+                    <span className="ml-2 inline-flex items-center gap-1 align-middle text-sm font-medium text-primary">
+                      @kaleabmoges783
+                      <ExternalLink className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                    </span>
+                  </h3>
+                </div>
               </div>
               <div className="flex flex-wrap gap-2">
                 {TIKTOK.map((t) => (
@@ -119,6 +125,41 @@ export function Content() {
             </div>
           </a>
         </Reveal>
+
+        <Reveal delay={0.22}>
+          <a
+            href={YE_BUNA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Join Kaleab Moges on Ye Buna"
+            className="group card-elegant relative mt-6 block overflow-hidden rounded-2xl p-6 transition-shadow hover:shadow-glow"
+          >
+            <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-to-br from-gold/25 to-destructive/15 blur-2xl" />
+            <div className="relative flex flex-wrap items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-gold/25 to-primary/20 text-gold transition-transform group-hover:scale-110">
+                  <Coffee className="h-6 w-6" />
+                </div>
+                <div>
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                    Ye Buna Community
+                  </div>
+                  <h3 className="font-display text-xl font-bold">
+                    Join my Ye Buna club
+                    <span className="ml-2 inline-flex items-center gap-1 align-middle text-sm font-medium text-primary">
+                      Get in
+                      <ExternalLink className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                    </span>
+                  </h3>
+                </div>
+              </div>
+              <p className="max-w-xs text-sm text-muted-foreground">
+                Conversations on growth, markets and ideas — over a cup of coffee.
+              </p>
+            </div>
+          </a>
+        </Reveal>
+
 
         <Reveal delay={0.25}>
           <div className="card-elegant relative mt-6 overflow-hidden rounded-3xl p-7">
