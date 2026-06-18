@@ -1,5 +1,5 @@
 import { createElement, type ReactElement, type SVGProps } from "react";
-import { Linkedin, Mail, Send, Youtube, type LucideIcon } from "lucide-react";
+import { Coffee, Linkedin, Mail, Send, Youtube, type LucideIcon } from "lucide-react";
 
 export type IconType = LucideIcon | ((props: SVGProps<SVGSVGElement>) => ReactElement);
 
@@ -27,9 +27,15 @@ const WhatsAppIcon = (props: SVGProps<SVGSVGElement>) =>
     }),
   );
 
+export const TIKTOK_URL = "https://www.tiktok.com/@kaleabmoges783";
+
+export const YE_BUNA_URL =
+  "https://ye-buna.com/club_about_redirect?club_get=67922aeeda503_yebuna&ref=Kaleab-Moges";
+
 export const SOCIALS: SocialLink[] = [
   { label: "YouTube", href: "https://www.youtube.com/@KaleabMogesOfficial", icon: Youtube },
-  { label: "TikTok", href: "https://www.tiktok.com/@kaleabmoges783", icon: TikTokIcon },
+  { label: "Ye Buna", href: YE_BUNA_URL, icon: Coffee },
+  { label: "TikTok", href: TIKTOK_URL, icon: TikTokIcon },
   { label: "Telegram", href: "https://t.me/KaleabMogesOfficial", icon: Send },
   { label: "WhatsApp", href: "https://wa.me/251987076125", icon: WhatsAppIcon },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/kaleabmoges", icon: Linkedin },
