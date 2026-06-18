@@ -9,7 +9,7 @@ export type SocialLink = {
   icon: IconType;
 };
 
-const TikTokIcon = (props: SVGProps<SVGSVGElement>) =>
+export const TikTokIcon = (props: SVGProps<SVGSVGElement>) =>
   createElement(
     "svg",
     { viewBox: "0 0 24 24", fill: "currentColor", width: "1em", height: "1em", ...props },
