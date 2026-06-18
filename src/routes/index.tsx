@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion, useScroll, useSpring } from "motion/react";
 import { Toaster } from "sonner";
 import { CustomCursor } from "@/components/portfolio/CustomCursor";
+import { AnimatedBackground } from "@/components/portfolio/AnimatedBackground";
 import { Navbar } from "@/components/portfolio/Navbar";
 import { Hero } from "@/components/portfolio/sections/Hero";
 import { About } from "@/components/portfolio/sections/About";
@@ -42,6 +43,8 @@ function Index() {
 
   return (
     <div className="relative min-h-screen bg-background">
+      <AnimatedBackground />
+
       {/* scroll progress */}
       <motion.div
         style={{ scaleX: progress }}
