@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
-import { Dribbble, Music2, Play, Sparkles } from "lucide-react";
+import { Dribbble, Music2, Pause, Play, Sparkles } from "lucide-react";
 import { Reveal } from "../Reveal";
 import { TiltCard } from "../TiltCard";
 import { SectionHeading } from "../SectionHeading";
@@ -20,11 +20,59 @@ const INTERESTS = [
   },
 ];
 
-// Authentic St. Yared Zema (Ethiopian Orthodox liturgical chant)
-const YARED_VIDEO_ID = "L98_6mlKeIQ";
+// Sacred Ethiopian Orthodox Zema (Geez chant) — audio only
+const YARED_AUDIO_SRC = "/audio/st-yared-zema.mp3";
+
+function fmt(t: number) {
+  if (!isFinite(t)) return "0:00";
+  const m = Math.floor(t / 60);
+  const s = Math.floor(t % 60);
+  return `${m}:${s.toString().padStart(2, "0")}`;
+}
 
 function YaredPlayer() {
+  const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
+  const [current, setCurrent] = useState(0);
+  const [duration, setDuration] = useState(0);
+
+  useEffect(() => {
+    const a = audioRef.current;
+    if (!a) return;
+    const onTime = () => setCurrent(a.currentTime);
+    const onMeta = () => setDuration(a.duration);
+    const onEnd = () => setPlaying(false);
+    a.addEventListener("timeupdate", onTime);
+    a.addEventListener("loadedmetadata", onMeta);
+    a.addEventListener("ended", onEnd);
+    return () => {
+      a.removeEventListener("timeupdate", onTime);
+      a.removeEventListener("loadedmetadata", onMeta);
+      a.removeEventListener("ended", onEnd);
+    };
+  }, []);
+
+  const toggle = () => {
+    const a = audioRef.current;
+    if (!a) return;
+    if (a.paused) {
+      void a.play();
+      setPlaying(true);
+    } else {
+      a.pause();
+      setPlaying(false);
+    }
+  };
+
+  const seek = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const a = audioRef.current;
+    if (!a) return;
+    const t = Number(e.target.value);
+    a.currentTime = t;
+    setCurrent(t);
+  };
+
+  const pct = duration ? (current / duration) * 100 : 0;
 
   return (
     <div className="card-elegant relative overflow-hidden rounded-3xl p-6">
@@ -39,40 +87,56 @@ function YaredPlayer() {
         </div>
       </div>
 
-      <div className="relative mt-5 aspect-video overflow-hidden rounded-2xl border border-white/10 bg-black/40">
-        {playing ? (
-          <iframe
-            title="St. Yared Zema — Ethiopian Orthodox liturgical chant"
-            src={`https://www.youtube-nocookie.com/embed/${YARED_VIDEO_ID}?autoplay=1&rel=0`}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="h-full w-full"
-          />
-        ) : (
-          <button
-            type="button"
-            onClick={() => setPlaying(true)}
-            aria-label="Play St. Yared Zema"
-            className="group absolute inset-0 grid place-items-center"
-          >
-            <img
-              src={`https://i.ytimg.com/vi/${YARED_VIDEO_ID}/hqdefault.jpg`}
-              alt="St. Yared Zema chant"
-              loading="lazy"
-              className="absolute inset-0 h-full w-full object-cover opacity-60 transition-opacity group-hover:opacity-80"
-            />
-            <span className="relative grid h-16 w-16 place-items-center rounded-full bg-gradient-to-br from-primary to-chart-3 text-primary-foreground shadow-glow transition-transform group-hover:scale-110">
-              <Play className="ml-1 h-7 w-7" />
+      <audio ref={audioRef} src={YARED_AUDIO_SRC} preload="metadata" />
+
+      <div className="relative mt-5 flex items-center gap-4 rounded-2xl border border-white/10 bg-black/30 p-4">
+        <button
+          type="button"
+          onClick={toggle}
+          aria-label={playing ? "Pause St. Yared Zema" : "Play St. Yared Zema"}
+          className="group grid h-14 w-14 shrink-0 place-items-center rounded-full bg-gradient-to-br from-primary to-chart-3 text-primary-foreground shadow-glow transition-transform hover:scale-110"
+        >
+          {playing ? (
+            <Pause className="h-6 w-6" />
+          ) : (
+            <Play className="ml-0.5 h-6 w-6" />
+          )}
+        </button>
+
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center justify-between text-xs text-muted-foreground">
+            <span className="truncate font-medium text-foreground">Sacred Geez Zema</span>
+            <span className="tabular-nums">
+              {fmt(current)} / {fmt(duration)}
             </span>
-          </button>
-        )}
+          </div>
+          <div className="relative mt-2">
+            <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-primary via-chart-3 to-gold transition-[width]"
+                style={{ width: `${pct}%` }}
+              />
+            </div>
+            <input
+              type="range"
+              min={0}
+              max={duration || 0}
+              step={0.1}
+              value={current}
+              onChange={seek}
+              aria-label="Seek audio"
+              className="absolute inset-0 h-1.5 w-full cursor-pointer opacity-0"
+            />
+          </div>
+        </div>
       </div>
       <p className="relative mt-3 text-xs text-muted-foreground/80">
-        Sacred Ethiopian Orthodox Zema attributed to Saint Yared — tap to listen.
+        Sacred Ethiopian Orthodox Zema attributed to Saint Yared — press play to listen.
       </p>
     </div>
   );
 }
+
 
 export function Hobbies() {
   return (
