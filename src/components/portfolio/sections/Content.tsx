@@ -4,7 +4,7 @@ import { TiltCard } from "../TiltCard";
 import { Counter } from "../Counter";
 import { SectionHeading } from "../SectionHeading";
 import { MagneticButton } from "../MagneticButton";
-import { BROKERS } from "../socials";
+import { BROKERS, TIKTOK_URL } from "../socials";
 
 const CHANNELS = [
   {
@@ -86,26 +86,38 @@ export function Content() {
         </div>
 
         <Reveal delay={0.2}>
-          <div className="card-elegant mt-6 rounded-2xl p-6">
+          <a
+            href={TIKTOK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Kaleab Moges on TikTok"
+            className="group card-elegant mt-6 block rounded-2xl p-6 transition-shadow hover:shadow-glow"
+          >
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
                 <div className="text-xs uppercase tracking-widest text-muted-foreground">
                   TikTok
                 </div>
-                <h3 className="font-display text-xl font-bold">Short-form education</h3>
+                <h3 className="font-display text-xl font-bold">
+                  Short-form education
+                  <span className="ml-2 inline-flex items-center gap-1 align-middle text-sm font-medium text-primary">
+                    @kaleabmoges783
+                    <ExternalLink className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </h3>
               </div>
               <div className="flex flex-wrap gap-2">
                 {TIKTOK.map((t) => (
                   <span
                     key={t}
-                    className="rounded-full border border-border px-4 py-1.5 text-sm font-medium transition-colors hover:border-primary/50 hover:text-primary"
+                    className="rounded-full border border-border px-4 py-1.5 text-sm font-medium transition-colors group-hover:border-primary/40"
                   >
                     {t}
                   </span>
                 ))}
               </div>
             </div>
-          </div>
+          </a>
         </Reveal>
 
         <Reveal delay={0.25}>
