@@ -42,7 +42,7 @@ function Index() {
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
 
   return (
-    <div className="relative min-h-screen bg-background">
+    <div className="relative min-h-screen">
       <AnimatedBackground />
 
       {/* scroll progress */}
