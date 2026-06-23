@@ -1,6 +1,7 @@
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "motion/react";
 import { ArrowDown, Download, Mail, Sparkles } from "lucide-react";
 import portrait from "@/assets/kaleab-portrait.jpg";
+import cvAsset from "@/assets/kaleab-moges-cv.pdf.asset.json";
 import { useMounted } from "../useMounted";
 import { ParticleField } from "../ParticleField";
 import { Globe } from "../Globe";
@@ -117,8 +118,10 @@ export function Hero() {
             </MagneticButton>
             <MagneticButton
               as="a"
-              href="#about"
-              download
+              href={cvAsset.url}
+              target="_blank"
+              rel="noreferrer"
+              download="Kaleab-Moges-CV.pdf"
               className="inline-flex items-center gap-2 rounded-xl glass px-6 py-3.5 text-sm font-semibold text-foreground"
             >
               <Download className="h-4 w-4" /> Download CV
@@ -170,6 +173,9 @@ export function Hero() {
                 alt="Portrait of Kaleab Moges"
                 width={896}
                 height={1152}
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
                 className="h-full w-full object-cover"
               />
             </div>

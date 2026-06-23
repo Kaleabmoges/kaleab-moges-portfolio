@@ -7,7 +7,7 @@ type MagneticButtonProps = {
   onClick?: () => void;
   as?: "button" | "a";
   href?: string;
-  download?: boolean;
+  download?: boolean | string;
   target?: string;
   rel?: string;
 };

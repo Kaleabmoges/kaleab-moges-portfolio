@@ -4,6 +4,7 @@ import { Dribbble, Music2, Pause, Play, Sparkles } from "lucide-react";
 import { Reveal } from "../Reveal";
 import { TiltCard } from "../TiltCard";
 import { SectionHeading } from "../SectionHeading";
+import yaredAudio from "@/assets/st-yared-zema.mp3.asset.json";
 
 const INTERESTS = [
   {
@@ -20,8 +21,8 @@ const INTERESTS = [
   },
 ];
 
-// Sacred Ethiopian Orthodox Zema (Geez chant) — audio only
-const YARED_AUDIO_SRC = "/audio/st-yared-zema.mp3";
+// Sacred Ethiopian Orthodox Zema (Geez chant) — audio only, served from CDN
+const YARED_AUDIO_SRC = yaredAudio.url;
 
 function fmt(t: number) {
   if (!isFinite(t)) return "0:00";
