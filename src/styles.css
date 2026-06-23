@@ -212,7 +212,7 @@
   }
 
   ::selection {
-    background: oklch(0.78 0.13 195 / 0.3);
+    background: var(--selection-bg);
     color: var(--color-foreground);
   }
 
@@ -220,27 +220,39 @@
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: oklch(0.16 0.02 250);
+    background: var(--scrollbar-track);
   }
   ::-webkit-scrollbar-thumb {
-    background: oklch(0.4 0.05 250);
+    background: var(--scrollbar-thumb);
     border-radius: 999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: oklch(0.78 0.13 195 / 0.6);
+    background: var(--ring);
+  }
+
+  /* Cheaper offscreen rendering for long pages */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
 @utility glass {
-  background: oklch(1 0 0 / 0.04);
+  background: var(--glass-bg);
   backdrop-filter: blur(18px) saturate(140%);
-  border: 1px solid oklch(1 0 0 / 0.1);
+  border: 1px solid var(--glass-border);
 }
 
 @utility glass-strong {
-  background: oklch(0.21 0.025 255 / 0.7);
+  background: var(--glass-strong-bg);
   backdrop-filter: blur(24px) saturate(160%);
-  border: 1px solid oklch(1 0 0 / 0.12);
+  border: 1px solid var(--glass-border);
 }
 
 @utility text-gradient {
