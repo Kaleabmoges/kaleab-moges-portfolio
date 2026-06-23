@@ -10,12 +10,11 @@ export function AnimatedBackground() {
       {/* deep base wash (matches the original static dark background) */}
       <div className="absolute inset-0 bg-background" />
 
-      {/* drifting aurora glows — kept dim so the page stays dark.
-          Lighter blur radius keeps GPU compositing cheap. */}
-      <div className="animate-aurora transform-gpu absolute -left-40 top-[-10%] h-[40rem] w-[40rem] rounded-full bg-primary/[0.06] blur-[100px] will-change-transform" />
-      <div className="animate-aurora transform-gpu absolute right-[-15%] top-[25%] h-[36rem] w-[36rem] rounded-full bg-gold/[0.05] blur-[100px] [animation-delay:4s] will-change-transform" />
-      <div className="animate-aurora transform-gpu absolute left-[20%] top-[60%] h-[32rem] w-[32rem] rounded-full bg-chart-3/[0.06] blur-[100px] [animation-delay:8s] will-change-transform" />
-      <div className="animate-aurora transform-gpu absolute right-[10%] bottom-[-10%] h-[34rem] w-[34rem] rounded-full bg-primary/[0.05] blur-[100px] [animation-delay:11s] will-change-transform" />
+      {/* drifting aurora glows — kept dim so the page stays dark */}
+      <div className="animate-aurora absolute -left-40 top-[-10%] h-[42rem] w-[42rem] rounded-full bg-primary/[0.06] blur-[150px]" />
+      <div className="animate-aurora absolute right-[-15%] top-[25%] h-[38rem] w-[38rem] rounded-full bg-gold/[0.05] blur-[150px] [animation-delay:4s]" />
+      <div className="animate-aurora absolute left-[20%] top-[60%] h-[34rem] w-[34rem] rounded-full bg-chart-3/[0.06] blur-[150px] [animation-delay:8s]" />
+      <div className="animate-aurora absolute right-[10%] bottom-[-10%] h-[36rem] w-[36rem] rounded-full bg-primary/[0.05] blur-[150px] [animation-delay:11s]" />
 
       {/* subtle moving grid sheen */}
       <div

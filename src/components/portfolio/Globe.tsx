@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 
-/** Rotating 3D wireframe globe rendered on canvas — lightweight, no WebGL.
- *  Pauses when offscreen / tab hidden and respects reduced-motion. */
+/** Rotating 3D wireframe globe rendered on canvas — lightweight, no WebGL. */
 export function Globe({ className = "" }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -11,7 +10,7 @@ export function Globe({ className = "" }: { className?: string }) {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const dpr = Math.min(devicePixelRatio || 1, 2);
+    const dpr = devicePixelRatio || 1;
     const size = canvas.offsetWidth;
     canvas.width = size * dpr;
     canvas.height = size * dpr;
@@ -21,7 +20,8 @@ export function Globe({ className = "" }: { className?: string }) {
     const cy = size / 2;
     const radius = size * 0.4;
 
-    const N = 420;
+    // generate points on a sphere (fibonacci distribution)
+    const N = 520;
     const pts: { x: number; y: number; z: number }[] = [];
     for (let i = 0; i < N; i++) {
       const phi = Math.acos(1 - (2 * (i + 0.5)) / N);
@@ -34,15 +34,19 @@ export function Globe({ className = "" }: { className?: string }) {
     }
 
     let angle = 0;
-    const drawFrame = () => {
+    let raf = 0;
+    const render = () => {
       ctx.clearRect(0, 0, size, size);
+      angle += 0.0035;
       const cos = Math.cos(angle);
       const sin = Math.sin(angle);
       const tilt = 0.42;
 
       for (const p of pts) {
+        // rotate around Y
         let x = p.x * cos - p.z * sin;
         let z = p.x * sin + p.z * cos;
+        // tilt around X
         const y = p.y * Math.cos(tilt) - z * Math.sin(tilt);
         z = p.y * Math.sin(tilt) + z * Math.cos(tilt);
 
@@ -58,57 +62,18 @@ export function Globe({ className = "" }: { className?: string }) {
         ctx.fill();
       }
 
+      // glow halo
       const grad = ctx.createRadialGradient(cx, cy, radius * 0.6, cx, cy, radius * 1.25);
       grad.addColorStop(0, "rgba(110, 231, 220, 0.08)");
       grad.addColorStop(1, "rgba(110, 231, 220, 0)");
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, size, size);
-    };
 
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) {
-      drawFrame();
-      return;
-    }
-
-    let raf = 0;
-    let visible = true;
-
-    const render = () => {
-      angle += 0.0035;
-      drawFrame();
       raf = requestAnimationFrame(render);
     };
-    const start = () => {
-      if (!raf && visible && !document.hidden) render();
-    };
-    const stop = () => {
-      cancelAnimationFrame(raf);
-      raf = 0;
-    };
+    render();
 
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        visible = entry.isIntersecting;
-        if (visible) start();
-        else stop();
-      },
-      { threshold: 0 },
-    );
-    io.observe(canvas);
-
-    const onVisibility = () => {
-      if (document.hidden) stop();
-      else start();
-    };
-
-    start();
-    document.addEventListener("visibilitychange", onVisibility);
-    return () => {
-      stop();
-      io.disconnect();
-      document.removeEventListener("visibilitychange", onVisibility);
-    };
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   return <canvas ref={canvasRef} className={className} aria-hidden />;
