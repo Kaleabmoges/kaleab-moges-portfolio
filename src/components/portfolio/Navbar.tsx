@@ -1,6 +1,7 @@
 import { AnimatePresence, motion, useScroll, useMotionValueEvent } from "motion/react";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 const LINKS = [
   { label: "About", href: "#about" },
