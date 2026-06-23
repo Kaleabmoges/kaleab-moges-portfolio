@@ -1,6 +1,7 @@
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "motion/react";
 import { ArrowDown, Download, Mail, Sparkles } from "lucide-react";
 import portrait from "@/assets/kaleab-portrait.jpg";
+import cvAsset from "@/assets/kaleab-moges-cv.pdf.asset.json";
 import { useMounted } from "../useMounted";
 import { ParticleField } from "../ParticleField";
 import { Globe } from "../Globe";
