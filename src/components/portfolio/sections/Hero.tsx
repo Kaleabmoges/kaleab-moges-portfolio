@@ -118,8 +118,10 @@ export function Hero() {
             </MagneticButton>
             <MagneticButton
               as="a"
-              href="#about"
-              download
+              href={cvAsset.url}
+              target="_blank"
+              rel="noreferrer"
+              download="Kaleab-Moges-CV.pdf"
               className="inline-flex items-center gap-2 rounded-xl glass px-6 py-3.5 text-sm font-semibold text-foreground"
             >
               <Download className="h-4 w-4" /> Download CV
