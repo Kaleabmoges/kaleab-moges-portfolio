@@ -173,6 +173,9 @@ export function Hero() {
                 alt="Portrait of Kaleab Moges"
                 width={896}
                 height={1152}
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
                 className="h-full w-full object-cover"
               />
             </div>
