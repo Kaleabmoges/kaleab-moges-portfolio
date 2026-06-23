@@ -4,6 +4,7 @@ import { Dribbble, Music2, Pause, Play, Sparkles } from "lucide-react";
 import { Reveal } from "../Reveal";
 import { TiltCard } from "../TiltCard";
 import { SectionHeading } from "../SectionHeading";
+import yaredAudio from "@/assets/st-yared-zema.mp3.asset.json";
 
 const INTERESTS = [
   {
