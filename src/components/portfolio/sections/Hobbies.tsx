@@ -21,8 +21,8 @@ const INTERESTS = [
   },
 ];
 
-// Sacred Ethiopian Orthodox Zema (Geez chant) — audio only
-const YARED_AUDIO_SRC = "/audio/st-yared-zema.mp3";
+// Sacred Ethiopian Orthodox Zema (Geez chant) — audio only, served from CDN
+const YARED_AUDIO_SRC = yaredAudio.url;
 
 function fmt(t: number) {
   if (!isFinite(t)) return "0:00";
