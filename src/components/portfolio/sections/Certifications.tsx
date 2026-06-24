@@ -2,27 +2,74 @@ import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import {
   Award,
-  BadgeCheck,
-  Briefcase,
-  Code2,
-  LineChart,
-  ShieldCheck,
+  Building2,
+  ExternalLink,
+  HeartHandshake,
+  Mic,
+  Terminal,
+  Users,
   X,
 } from "lucide-react";
 import { Reveal } from "../Reveal";
 import { TiltCard } from "../TiltCard";
 import { SectionHeading } from "../SectionHeading";
 
-const CERTS = [
-  { icon: Briefcase, title: "Banking Certificate", issuer: "Awash Bank", year: "2023" },
-  { icon: BadgeCheck, title: "Employability Training", issuer: "Professional Program", year: "2022" },
-  { icon: ShieldCheck, title: "Cybersecurity Certification", issuer: "Security Track", year: "2024" },
-  { icon: Code2, title: "Web Development Certification", issuer: "Full-Stack Program", year: "2024" },
-  { icon: LineChart, title: "Trading Program Certification", issuer: "Financial Markets", year: "2024" },
-  { icon: Award, title: "ALX Software Engineering", issuer: "ALX Africa", year: "2025" },
-];
+type Cert = {
+  icon: typeof Award;
+  title: string;
+  issuer: string;
+  role?: string;
+  year: string;
+  link?: string;
+};
 
-type Cert = (typeof CERTS)[number];
+const CERTS: Cert[] = [
+  {
+    icon: Terminal,
+    title: "Certificate of Completion",
+    issuer: "Hey Day",
+    role: "Python Training",
+    year: "Jan 2022",
+    link: "https://drive.google.com/file/d/1LB0m8t3Qco8XDQfHRrYe9ffMAz6cF1k-/view",
+  },
+  {
+    icon: Mic,
+    title: "Certificate of Service",
+    issuer: "Hawassa University",
+    role: "The Speaker",
+    year: "Sep 2022",
+    link: "https://drive.google.com/file/d/1LDpl00O9yZadZNIEBNu8Dsr0UVX2k6py/view",
+  },
+  {
+    icon: Users,
+    title: "Certificate of Appreciation",
+    issuer: "Hawassa University",
+    role: "Class Representative",
+    year: "Sep 2022",
+    link: "https://drive.google.com/file/d/1LCGZv_Nm7Mt36II4sDAqmNhIo3fwXiUS/view",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Certificate of Appreciation",
+    issuer: "Hawassa University",
+    role: "Kindeal Charity Club",
+    year: "Sep 2022",
+    link: "https://drive.google.com/file/d/1LNLkJsyg5JO-Qz5iIokah5LXxIaF8A4R/view",
+  },
+  {
+    icon: Building2,
+    title: "Certificate of Service",
+    issuer: "Awash Bank",
+    year: "Aug 2022",
+  },
+  {
+    icon: Award,
+    title: "Certificate of Completion",
+    issuer: "Dereja",
+    year: "Oct 2022",
+    link: "https://drive.google.com/file/d/1wnBZ9_z47sLwrc8JjMfrlWpPs3KSpBGB/view",
+  },
+];
 
 export function Certifications() {
   const [active, setActive] = useState<Cert | null>(null);
@@ -38,24 +85,49 @@ export function Certifications() {
         />
 
         <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {CERTS.map((c, i) => (
-            <Reveal key={c.title} delay={i * 0.06}>
-              <TiltCard className="group h-full">
-                <button
-                  onClick={() => setActive(c)}
-                  className="card-elegant flex h-full w-full items-center gap-4 rounded-2xl p-5 text-left transition-colors hover:border-primary/40"
-                >
-                  <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-primary/20 to-gold/20 text-primary">
-                    <c.icon className="h-6 w-6" />
-                  </div>
-                  <div className="min-w-0">
-                    <h3 className="truncate font-display text-base font-bold">{c.title}</h3>
-                    <p className="text-sm text-muted-foreground">{c.issuer}</p>
-                  </div>
-                </button>
-              </TiltCard>
-            </Reveal>
-          ))}
+          {CERTS.map((c, i) => {
+            const inner = (
+              <>
+                <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-primary/20 to-gold/20 text-primary">
+                  <c.icon className="h-6 w-6" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h3 className="truncate font-display text-base font-bold">{c.title}</h3>
+                  <p className="text-sm text-muted-foreground">
+                    {c.issuer}
+                    {c.role ? ` · ${c.role}` : ""}
+                  </p>
+                </div>
+                {c.link ? (
+                  <ExternalLink className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
+                ) : null}
+              </>
+            );
+
+            return (
+              <Reveal key={`${c.title}-${c.issuer}-${c.role ?? ""}`} delay={i * 0.06}>
+                <TiltCard className="group h-full">
+                  {c.link ? (
+                    <a
+                      href={c.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="card-elegant flex h-full w-full items-center gap-4 rounded-2xl p-5 text-left transition-colors hover:border-primary/40"
+                    >
+                      {inner}
+                    </a>
+                  ) : (
+                    <button
+                      onClick={() => setActive(c)}
+                      className="card-elegant flex h-full w-full items-center gap-4 rounded-2xl p-5 text-left transition-colors hover:border-primary/40"
+                    >
+                      {inner}
+                    </button>
+                  )}
+                </TiltCard>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
 
@@ -87,7 +159,10 @@ export function Certifications() {
                 <active.icon className="h-8 w-8" />
               </div>
               <h3 className="mt-5 font-display text-2xl font-bold">{active.title}</h3>
-              <p className="mt-1 text-primary">{active.issuer}</p>
+              <p className="mt-1 text-primary">
+                {active.issuer}
+                {active.role ? ` · ${active.role}` : ""}
+              </p>
               <div className="mt-6 flex items-center gap-3 rounded-xl border border-dashed border-border p-4 text-sm text-muted-foreground">
                 <Award className="h-5 w-5 text-gold" />
                 Certificate awarded · {active.year}
