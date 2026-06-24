@@ -3,10 +3,10 @@ import { Heart, LineChart, Users } from "lucide-react";
 import { Reveal } from "../Reveal";
 import { TiltCard } from "../TiltCard";
 import { SectionHeading } from "../SectionHeading";
-import charity1 from "@/assets/kindeal-charity-1.jpg.asset.json";
-import charity2 from "@/assets/kindeal-charity-2.jpg.asset.json";
-import trading1 from "@/assets/trading-students-1.jpg.asset.json";
-import trading2 from "@/assets/trading-students-2.jpg.asset.json";
+const charity1 = "/images/kindeal-charity-1.jpg";
+const charity2 = "/images/kindeal-charity-2.jpg";
+const trading1 = "/images/trading-students-1.jpg";
+const trading2 = "/images/trading-students-2.jpg";
 
 const PHOTOS = [
   {
