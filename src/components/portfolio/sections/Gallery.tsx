@@ -10,28 +10,28 @@ const trading2 = "/images/trading-students-2.jpg";
 
 const PHOTOS = [
   {
-    src: trading1.url,
+    src: trading1,
     title: "Mentoring Trading Students",
     caption: "Hands-on sessions guiding students through live financial markets.",
     tag: "Trading",
     icon: LineChart,
   },
   {
-    src: trading2.url,
+    src: trading2,
     title: "Trading Study Group",
     caption: "Learning together — charts, strategy and real market practice.",
     tag: "Trading",
     icon: LineChart,
   },
   {
-    src: charity1.url,
+    src: charity1,
     title: "Talita Rise Up Outreach",
     caption: "Kindeal Charity Club members on the ground, supporting the community.",
     tag: "Community",
     icon: Heart,
   },
   {
-    src: charity2.url,
+    src: charity2,
     title: "Hands-on Community Service",
     caption: "Volunteering together to bring real change to young lives.",
     tag: "Community",
