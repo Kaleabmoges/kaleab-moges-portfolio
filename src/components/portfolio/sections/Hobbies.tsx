@@ -89,7 +89,7 @@ function YaredPlayer() {
 
       <audio ref={audioRef} src={YARED_AUDIO_SRC} preload="metadata" />
 
-      <div className="relative mt-5 flex items-center gap-4 rounded-2xl border border-white/10 bg-black/30 p-4">
+      <div className="relative mt-5 flex items-center gap-4 rounded-2xl border border-border bg-secondary/40 p-4">
         <button
           type="button"
           onClick={toggle}
@@ -111,7 +111,7 @@ function YaredPlayer() {
             </span>
           </div>
           <div className="relative mt-2">
-            <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+            <div className="h-1.5 w-full overflow-hidden rounded-full bg-foreground/10">
               <div
                 className="h-full rounded-full bg-gradient-to-r from-primary via-chart-3 to-gold transition-[width]"
                 style={{ width: `${pct}%` }}

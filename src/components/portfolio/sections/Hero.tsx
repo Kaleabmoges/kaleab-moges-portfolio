@@ -163,7 +163,7 @@ export function Hero() {
             style={{ x: mx, y: my }}
             className="relative"
           >
-            <div className="animate-float relative overflow-hidden rounded-[2rem] border border-white/10 shadow-elegant">
+            <div className="animate-float relative overflow-hidden rounded-[2rem] border border-border shadow-elegant">
               <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
               <img
                 src={portrait}
