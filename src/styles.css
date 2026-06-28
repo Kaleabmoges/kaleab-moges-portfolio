@@ -249,9 +249,9 @@
 }
 
 @utility card-elegant {
-  background: oklch(0.21 0.025 255 / 0.6);
+  background: color-mix(in oklch, var(--color-card) 60%, transparent);
   backdrop-filter: blur(18px);
-  border: 1px solid oklch(1 0 0 / 0.08);
+  border: 1px solid var(--color-border);
   box-shadow: var(--shadow-elegant);
 }
 
