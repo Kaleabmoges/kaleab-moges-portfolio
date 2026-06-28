@@ -89,7 +89,7 @@ function YaredPlayer() {
 
       <audio ref={audioRef} src={YARED_AUDIO_SRC} preload="metadata" />
 
-      <div className="relative mt-5 flex items-center gap-4 rounded-2xl border border-white/10 bg-black/30 p-4">
+      <div className="relative mt-5 flex items-center gap-4 rounded-2xl border border-border bg-secondary/40 p-4">
         <button
           type="button"
           onClick={toggle}
