@@ -40,7 +40,7 @@ function Radial({ score }: { score: number }) {
 
   return (
     <svg ref={ref} viewBox="0 0 100 100" className="h-24 w-24 -rotate-90">
-      <circle cx="50" cy="50" r={R} fill="none" stroke="oklch(0.27 0.03 255)" strokeWidth="8" />
+      <circle cx="50" cy="50" r={R} fill="none" stroke="var(--muted)" strokeWidth="8" />
       <motion.circle
         cx="50"
         cy="50"
