@@ -32,7 +32,7 @@ export function TiltCard({ children, className = "", glare = true }: TiltCardPro
     ry.set(0);
   };
 
-  const glareBg = useMotionTemplate`radial-gradient(circle at ${gx}% ${gy}%, oklch(0.78 0.13 195 / 0.22), transparent 55%)`;
+  const glareBg = useMotionTemplate`radial-gradient(circle at ${gx}% ${gy}%, color-mix(in oklch, var(--primary) 22%, transparent), transparent 55%)`;
 
   return (
     <motion.div

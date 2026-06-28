@@ -40,7 +40,7 @@ function Radial({ score }: { score: number }) {
 
   return (
     <svg ref={ref} viewBox="0 0 100 100" className="h-24 w-24 -rotate-90">
-      <circle cx="50" cy="50" r={R} fill="none" stroke="oklch(0.27 0.03 255)" strokeWidth="8" />
+      <circle cx="50" cy="50" r={R} fill="none" stroke="var(--muted)" strokeWidth="8" />
       <motion.circle
         cx="50"
         cy="50"
@@ -56,8 +56,8 @@ function Radial({ score }: { score: number }) {
       />
       <defs>
         <linearGradient id="skillGrad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="oklch(0.78 0.13 195)" />
-          <stop offset="100%" stopColor="oklch(0.82 0.13 78)" />
+          <stop offset="0%" stopColor="var(--primary)" />
+          <stop offset="100%" stopColor="var(--gold)" />
         </linearGradient>
       </defs>
     </svg>
