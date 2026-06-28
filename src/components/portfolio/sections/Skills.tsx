@@ -56,8 +56,8 @@ function Radial({ score }: { score: number }) {
       />
       <defs>
         <linearGradient id="skillGrad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="oklch(0.78 0.13 195)" />
-          <stop offset="100%" stopColor="oklch(0.82 0.13 78)" />
+          <stop offset="0%" stopColor="var(--primary)" />
+          <stop offset="100%" stopColor="var(--gold)" />
         </linearGradient>
       </defs>
     </svg>
